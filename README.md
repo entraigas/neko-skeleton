@@ -1,8 +1,8 @@
 # neko-skeleton
 
-> empty skeleton frrom neko project
+> empty skeleton for Neko project
 
-## Packages description
+## Installed packages
 
 This skeleton contains a nuxt spa project configured with `yarn`, `lint`, `prettier`, `@nuxtjs/axios` & `bootstrap 4`.
 Also configured `yarn lintfix` to run prettier and fix lint issues.
@@ -17,7 +17,7 @@ $ yarn install
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# run pretties & fix lint issues
+# run prettier & fix lint issues
 $ yarn lintfix
 
 # build for production and launch server
