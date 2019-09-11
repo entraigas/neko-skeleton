@@ -1,39 +1,47 @@
 <template>
-  <b-field
-    :label="label"
-    :name="name"
-    :size="size"
-    :help="help"
-    :vee-scope="veeScope"
+  <ValidationProvider
+    v-slot="props"
+    :name="veeLabel || label"
+    :rules="veeRules"
+    slim
   >
-    <select
-      v-model="inputValue"
+    <b-field
+      :label="label"
       :name="name"
-      :style="inputStyle"
-      :class="'form-control' + sizeClass"
-      :disabled="disabled"
+      :size="size"
+      :help="help"
+      :state="mVeeCalculateState(props)"
+      :error-msg="props.errors[0]"
     >
-      <option v-if="first" :value="null">{{ first }}</option>
-      <option
-        v-for="item in options"
-        :key="item.value"
-        :value="item.value"
-        :disabled="!!item.disabled"
-        >{{ item.text }}</option
+      <select
+        v-model="inputValue"
+        :name="name"
+        :style="inputStyle"
+        :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+        :disabled="disabled"
       >
-    </select>
-  </b-field>
+        <option v-if="first" :value="null">{{ first }}</option>
+        <option
+          v-for="item in options"
+          :key="item.value"
+          :value="item.value"
+          :disabled="!!item.disabled"
+          >{{ item.text }}</option
+        >
+      </select>
+    </b-field>
+  </ValidationProvider>
 </template>
 
 <script>
-// import VeeValidateMixin from './mixin'
+import { ValidationProvider } from 'vee-validate'
+import VeeValidateMixin from './mixim'
 import BField from './b-field'
 
 export default {
   name: 'BInput',
-  // inject: ['$validator'],
-  components: { BField },
-  // mixins: [VeeValidateMixin],
+  components: { ValidationProvider, BField },
+  mixins: [VeeValidateMixin],
   props: {
     value: {
       type: [String, Number, Boolean],
@@ -93,6 +101,11 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      state: null
+    }
+  },
   computed: {
     inputValue: {
       get() {
@@ -101,15 +114,6 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
-    },
-    sizeClass() {
-      if (this.size === 'sm') {
-        return ' form-control-sm'
-      }
-      if (this.size === 'lg') {
-        return ' form-control-lg'
-      }
-      return ''
     }
   }
 }

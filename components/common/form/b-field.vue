@@ -9,8 +9,8 @@
     </label>
     <div :class="hasLabel ? 'col-sm-10' : 'col-sm-12'">
       <slot />
-      <div v-if="state === false" class="invalid-feedback">
-        error for {{ name }}
+      <div v-if="state === false && errorMsg" class="invalid-feedback">
+        {{ errorMsg }}
       </div>
       <small v-if="hasHelp" class="form-text text-muted">
         {{ help }}
@@ -47,10 +47,13 @@ export default {
       default: null
     },
     // validator attributes
-    veeScope: {
-      type: String,
-      required: false,
+    state: {
+      type: [Boolean, String],
       default: null
+    },
+    errorMsg: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -68,10 +71,6 @@ export default {
         return ' col-form-label-lg'
       }
       return ''
-    },
-    state() {
-      return null
-      // return this.veeFieldGetState(this.name)
     }
   }
 }

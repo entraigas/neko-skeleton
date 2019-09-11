@@ -1,28 +1,20 @@
-// import { configure } from 'vee-validate'
+/* eslint import/namespace: [2, { allowComputed: true }] */
+// import all rules
+import { configure, extend } from 'vee-validate'
+import * as rules from 'vee-validate/dist/rules'
 
-// const config = {
-//   classes: {
-//     valid: 'is-valid',
-//     invalid: 'is-invalid'
-//   },
-//   bails: true,
-//   skipOptional: true,
-//   mode: 'aggressive',
-//   useConstraintAttrs: true
-// }
+for (const rule in rules) {
+  extend(rule, rules[rule])
+}
 
-// // Sets the options.
-// export default configure(config)
-
-import { extend } from 'vee-validate'
-import { required, alpha } from 'vee-validate/dist/rules'
-
-extend('required', {
-  ...required,
-  message: 'This field is required'
-})
-
-extend('alpha', {
-  ...alpha,
-  message: 'This field must only contain alphabetic characters'
-})
+const config = {
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  },
+  bails: true,
+  skipOptional: true,
+  mode: 'aggressive',
+  useConstraintAttrs: true
+}
+configure(config)

@@ -1,31 +1,39 @@
 <template>
-  <b-field
-    :label="label"
-    :name="name"
-    :size="size"
-    :help="help"
-    :vee-scope="veeScope"
+  <ValidationProvider
+    v-slot="props"
+    :name="veeLabel || label"
+    :rules="veeRules"
+    slim
   >
-    <textarea
-      v-model="inputValue"
+    <b-field
+      :label="label"
       :name="name"
-      :placeholder="placeholder"
-      :disabled="!!disabled"
-      :style="inputStyle"
-      :class="'form-control' + sizeClass"
-    />
-  </b-field>
+      :size="size"
+      :help="help"
+      :state="mVeeCalculateState(props)"
+      :error-msg="props.errors[0]"
+    >
+      <textarea
+        v-model="inputValue"
+        :name="name"
+        :placeholder="placeholder"
+        :disabled="!!disabled"
+        :style="inputStyle"
+        :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+      />
+    </b-field>
+  </ValidationProvider>
 </template>
 
 <script>
-// import VeeValidateMixin from './mixin'
+import { ValidationProvider } from 'vee-validate'
+import VeeValidateMixin from './mixim'
 import BField from './b-field'
 
 export default {
   name: 'BTextarea',
-  // inject: ['$validator'],
-  components: { BField },
-  // mixins: [VeeValidateMixin],
+  components: { ValidationProvider, BField },
+  mixins: [VeeValidateMixin],
   props: {
     value: {
       type: [String, Number, Boolean],
@@ -67,18 +75,14 @@ export default {
       required: false,
       default: null
     },
-    veeScope: {
-      type: String,
-      required: false,
-      default: null
-    },
-    veeValidateOn: {
-      type: String,
-      default: ''
-    },
     veeLabel: {
       type: String,
       default: null
+    }
+  },
+  data() {
+    return {
+      state: null
     }
   },
   computed: {
@@ -89,15 +93,6 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
-    },
-    sizeClass() {
-      if (this.size === 'sm') {
-        return ' form-control-sm'
-      }
-      if (this.size === 'lg') {
-        return ' form-control-lg'
-      }
-      return ''
     }
   }
 }
