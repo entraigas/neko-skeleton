@@ -87,15 +87,6 @@ export default {
       required: false,
       default: null
     },
-    veeScope: {
-      type: String,
-      required: false,
-      default: null
-    },
-    veeValidateOn: {
-      type: String,
-      default: ''
-    },
     veeLabel: {
       type: String,
       default: null

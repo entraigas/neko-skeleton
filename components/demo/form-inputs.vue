@@ -7,50 +7,11 @@
       By default use md
     </p>
     <code>
-      &lt;b-input v-model="text" name="text" size="[sm|md|lg]" /&gt;
+      &lt;b-input v-model="text" size="[sm|md|lg]" /&gt;
     </code>
     <b-input v-model="text" name="text" size="sm" placeholder="sm" />
     <b-input v-model="text" name="text" placeholder="by default use md" />
     <b-input v-model="text" name="text" size="lg" placeholder="lg" />
-
-    <h2>label, disabled, placeholder &amp; help</h2>
-    <code>
-      &lt;b-input v-model="text" name="text" /&gt;
-    </code>
-    <b-input v-model="text" name="text" />
-
-    <code>
-      &lt;b-input v-model="text" name="text" label="Name *" /&gt;
-    </code>
-    <b-input v-model="text" name="text" label="Name *" />
-
-    <code>
-      &lt;b-input v-model="text" name="text" label="Name *" disabled /&gt;
-    </code>
-    <b-input v-model="text" name="text" label="Name *" disabled />
-
-    <code>
-      &lt;b-input v-model="text" name="text" label="Name *" placeholder="some
-      text..." /&gt;
-    </code>
-    <b-input
-      v-model="text"
-      name="text"
-      label="Name *"
-      placeholder="some text..."
-    />
-
-    <code>
-      &lt;b-input v-model="text" name="text" label="Name *" placeholder="some
-      text..." help="At least 6 characters"/&gt;
-    </code>
-    <b-input
-      v-model="text"
-      name="text"
-      label="Name *"
-      placeholder="some text..."
-      help="At least 6 characters"
-    />
 
     <h2>type</h2>
     <code>
@@ -78,35 +39,90 @@
     </code>
     <b-input v-model="number" name="password" type="range" />
 
+    <h2>label, disabled, placeholder &amp; help</h2>
+    <code>
+      &lt;b-input v-model="text" /&gt;
+    </code>
+    <b-input v-model="text" name="text" />
+
+    <code>
+      &lt;b-input v-model="text" label="Name" /&gt;
+    </code>
+    <b-input v-model="text" name="text" label="Name" />
+
+    <code>
+      &lt;b-input v-model="text" label="Name" disabled /&gt;
+    </code>
+    <b-input v-model="text" name="text" label="Name" disabled />
+
+    <code>
+      &lt;b-input v-model="text" label="Name" placeholder="some text..." /&gt;
+    </code>
+    <b-input
+      v-model="text"
+      name="text"
+      label="Name"
+      placeholder="some text..."
+    />
+
+    <code>
+      &lt;b-input v-model="text" label="Name" placeholder="some text..."
+      help="At least 6 characters"/&gt;
+    </code>
+    <b-input
+      v-model="text"
+      name="text"
+      label="Name"
+      placeholder="some text..."
+      help="At least 6 characters"
+    />
+
+    <h1>Textarea</h1>
+    <code>
+      &lt;b-textarea v-model="text" label="TextArea" placeholder="entet text
+      here..." /&gt;
+    </code>
+    <b-textarea
+      v-model="text"
+      name="textarea"
+      label="TextArea"
+      placeholder="entet text here..."
+    />
+
+    <h1>Checkbox &amp; Switch</h1>
+    <code>
+      &lt;b-checkbox v-model="check" label="Checkbox" placeholder="Enable
+      feature" /&gt;
+    </code>
+    <b-checkbox
+      v-model="check"
+      name="switch"
+      label="Checkbox"
+      placeholder="Enable feature"
+    />
+
+    <code>
+      &lt;b-checkbox v-model="check" label="Switchbox" placeholder="Enable
+      feature" is-switch /&gt;
+    </code>
+    <b-checkbox
+      v-model="check"
+      name="check"
+      label="Switchbox"
+      placeholder="Enable feature"
+      is-switch
+    />
+
     <h1>Select</h1>
     <code>
       &lt;b-select v-model="selected" :options="[{value, text}, {value, text}]
-      first="Select an option..." name="select" /&gt;
+      first="Select an option..." /&gt;
     </code>
     <b-select
       v-model="selected"
       :options="options"
       first="Select an option..."
       name="select"
-    />
-
-    <h1>Textarea</h1>
-    <code>
-      &lt;b-textarea v-model="text" name="textarea" placeholder="entet text
-      here..." /&gt;
-    </code>
-    <b-textarea
-      v-model="text"
-      name="textarea"
-      placeholder="entet text here..."
-    />
-
-    <h1>Switch</h1>
-    <b-switch
-      v-model="check"
-      name="switch"
-      label="Switch"
-      placeholder="asdfasdf"
     />
   </div>
 </template>
@@ -115,11 +131,11 @@
 import BInput from '~/components/common/form/b-input'
 import BSelect from '~/components/common/form/b-select'
 import BTextarea from '~/components/common/form/b-textarea'
-import BSwitch from '~/components/common/form/b-switch'
+import BCheckbox from '~/components/common/form/b-checkbox'
 
 export default {
   name: 'Demo',
-  components: { BInput, BSelect, BTextarea, BSwitch },
+  components: { BInput, BSelect, BTextarea, BCheckbox },
   data() {
     return {
       text: '',

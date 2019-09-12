@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import DemoForm from '~/components/demo/form'
+import DemoForm from '~/components/demo/form-inputs'
 export default {
   components: { DemoForm },
   data() {
