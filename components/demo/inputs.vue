@@ -1,17 +1,6 @@
 <template>
   <div class="container">
     <h1>Input</h1>
-    <h2>size</h2>
-    <p>
-      You can use <mark>sm</mark>, <mark>md</mark> &amp; <mark>lg</mark> sizes.
-      By default use md
-    </p>
-    <code>
-      &lt;b-input v-model="text" size="[sm|md|lg]" /&gt;
-    </code>
-    <b-input v-model="text" name="text" size="sm" placeholder="sm" />
-    <b-input v-model="text" name="text" placeholder="by default use md" />
-    <b-input v-model="text" name="text" size="lg" placeholder="lg" />
 
     <h2>type</h2>
     <code>
@@ -39,7 +28,7 @@
     </code>
     <b-input v-model="number" name="password" type="range" />
 
-    <h2>label, disabled, placeholder &amp; help</h2>
+    <h2>label, disabled, placeholder, help &amp; size</h2>
     <code>
       &lt;b-input v-model="text" /&gt;
     </code>
@@ -75,6 +64,35 @@
       label="Name"
       placeholder="some text..."
       help="At least 6 characters"
+    />
+
+    <h3>size</h3>
+    <p>
+      You can use <mark>sm</mark>, <mark>md</mark> &amp; <mark>lg</mark> sizes.
+      By default use md
+    </p>
+    <code>
+      &lt;b-input v-model="text" label="Name" size="[sm|md|lg]" /&gt;
+    </code>
+    <b-input
+      v-model="text"
+      name="text"
+      label="Name"
+      size="sm"
+      placeholder="sm"
+    />
+    <b-input
+      v-model="text"
+      name="text"
+      label="Name"
+      placeholder="by default use md"
+    />
+    <b-input
+      v-model="text"
+      name="text"
+      label="Name"
+      size="lg"
+      placeholder="lg"
     />
 
     <h1>Textarea</h1>
