@@ -12,7 +12,6 @@
       :state="calculateState(props)"
       :error-msg="props.errors[0]"
     >
-      <div>state = {{ state }} - isSelected = {{ isSelected }}</div>
       <vue-bootstrap-typeahead
         v-model="inputValue"
         :data="options"
