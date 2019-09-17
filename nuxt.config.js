@@ -27,7 +27,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/axios', '~/plugins/vee-validate.js'],
+  plugins: [
+    '~/plugins/axios',
+    '~/plugins/vee-validate.js'
+    // '~/plugins/default-components.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */

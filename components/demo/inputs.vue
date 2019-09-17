@@ -139,8 +139,22 @@
     <b-select
       v-model="selected"
       :options="options"
+      label="Select"
       first="Select an option..."
       name="select"
+    />
+
+    <h1>Autocomplete</h1>
+    <!-- <b-typeahead v-model="ac" :data="options" :serializer="(s) => s.text" /> -->
+
+    <b-autocomplete
+      v-model="ac"
+      :options="options"
+      :serializer="(s) => s.text"
+      label="Typeahead"
+      placeholder="choose an option..."
+      help="At least 2 characters"
+      @hit="onSelectAc"
     />
   </div>
 </template>
@@ -150,10 +164,11 @@ import BInput from '~/components/common/form/b-input'
 import BSelect from '~/components/common/form/b-select'
 import BTextarea from '~/components/common/form/b-textarea'
 import BCheckbox from '~/components/common/form/b-checkbox'
+import BAutocomplete from '~/components/common/form/b-autocomplete'
 
 export default {
   name: 'Demo',
-  components: { BInput, BSelect, BTextarea, BCheckbox },
+  components: { BInput, BSelect, BTextarea, BCheckbox, BAutocomplete },
   data() {
     return {
       text: '',
@@ -167,8 +182,21 @@ export default {
         { value: 3, text: 'option 3' },
         { value: 4, text: 'option 4' }
       ],
-      check: true
+      check: true,
+      ac: null
+    }
+  },
+  methods: {
+    onSelectAc(evt) {
+      // eslint-disable-next-line
+      console.log(evt)
     }
   }
 }
 </script>
+
+<style>
+.container {
+  margin-bottom: 10vh;
+}
+</style>
