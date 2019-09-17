@@ -1,42 +1,35 @@
 <template>
   <ValidationProvider
+    ref="autocompete"
     v-slot="props"
     :name="veeLabel || label"
     :rules="veeRules"
-    slim
   >
     <b-field
       :label="label"
-      :name="name"
       :size="size"
       :help="help"
-      :state="mVeeCalculateState(props)"
+      :state="calculateState(props)"
       :error-msg="props.errors[0]"
     >
+      <div>state = {{ state }} - isSelected = {{ isSelected }}</div>
       <vue-bootstrap-typeahead
-        v-model="ac"
+        v-model="inputValue"
         :data="options"
         :serializer="serializer"
         :placeholder="placeholder"
         :disabled="!!disabled"
+        :input-class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+        :size="size"
+        @input="selected = null"
         @hit="onSelect"
       />
-      <!-- <input
-        v-model="inputValue"
-        :type="type"
-        :name="name"
-        :placeholder="placeholder"
-        :disabled="!!disabled"
-        :style="inputStyle"
-        :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
-        :state="state"
-        @input="props.validate"
-      /> -->
     </b-field>
   </ValidationProvider>
 </template>
 
 <script>
+// import { ValidationProvider, extend } from 'vee-validate'
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
 import BField from './b-field'
@@ -47,9 +40,10 @@ export default {
   components: { ValidationProvider, BField, VueBootstrapTypeahead },
   mixins: [VeeValidateMixin],
   props: {
+    // value & unique attributes
     value: {
       type: [Object, String, Number],
-      default: ''
+      default: null
     },
     options: {
       type: Array,
@@ -60,10 +54,7 @@ export default {
       default: (d) => d,
       validator: (d) => d instanceof Function
     },
-    name: {
-      type: String,
-      required: false
-    },
+    // common input attributes
     label: {
       type: String,
       required: false,
@@ -99,7 +90,7 @@ export default {
   data() {
     return {
       state: null,
-      ac: ''
+      selected: null
     }
   },
   computed: {
@@ -110,11 +101,32 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
+    },
+    isSelected() {
+      return !!this.selected
     }
   },
   methods: {
+    calculateState(props) {
+      const calculate = (props) => {
+        const { untouched = false, changed = false, validated = false } = props
+        if ((untouched || changed) && !validated) {
+          return null
+        }
+        return props.valid
+      }
+      const state = calculate(props)
+      if (state === null) {
+        this.state = null
+      } else {
+        this.state = state && this.isSelected
+      }
+      return this.state
+    },
     onSelect(value) {
-      this.inputValue = value
+      this.$refs.autocompete.validate()
+      this.selected = value
+      this.$emit('hit', value)
     }
   }
 }

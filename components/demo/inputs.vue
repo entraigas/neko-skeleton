@@ -145,16 +145,19 @@
     />
 
     <h1>Autocomplete</h1>
-    <!-- <b-typeahead v-model="ac" :data="options" :serializer="(s) => s.text" /> -->
-
+    <code>
+      &lt;b-autocomplete v-model="selected" :options="[{value, text}, {value,
+      text}] :serializer="(s) => s.text" label="Typeahead" placeholder="Select
+      an option..." help="At least 2 characters" /&gt;
+    </code>
     <b-autocomplete
       v-model="ac"
       :options="options"
       :serializer="(s) => s.text"
       label="Typeahead"
-      placeholder="choose an option..."
+      placeholder="Select an option..."
       help="At least 2 characters"
-      @hit="onSelectAc"
+      @hit="onSelect"
     />
   </div>
 </template>
@@ -175,6 +178,7 @@ export default {
       password: '',
       email: '',
       number: 0,
+      ac: null,
       selected: null,
       options: [
         { value: 1, text: 'option 1' },
@@ -182,14 +186,12 @@ export default {
         { value: 3, text: 'option 3' },
         { value: 4, text: 'option 4' }
       ],
-      check: true,
-      ac: null
+      check: true
     }
   },
   methods: {
-    onSelectAc(evt) {
-      // eslint-disable-next-line
-      console.log(evt)
+    onSelect(value) {
+      alert(JSON.stringify(value))
     }
   }
 }

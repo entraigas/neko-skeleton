@@ -1,10 +1,6 @@
 <template>
   <div class="form-group row">
-    <label
-      v-if="hasLabel"
-      :for="name"
-      :class="'col-sm-2 col-form-label' + sizeClass"
-    >
+    <label v-if="hasLabel" :class="'col-sm-2 col-form-label' + sizeClass">
       {{ label }}
     </label>
     <div :class="hasLabel ? 'col-sm-10' : 'col-sm-12'">
@@ -29,10 +25,6 @@ export default {
   // mixins: [VeeValidateMixin],
   props: {
     // input attributes
-    name: {
-      type: String,
-      default: null
-    },
     label: {
       type: String,
       required: false,

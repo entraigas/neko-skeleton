@@ -33,6 +33,18 @@
     />
 
     <code>
+      &lt;b-select v-model="textarea" vee-rules="required|alpha|min:5" /&gt;
+    </code>
+    <b-textarea
+      v-model="textarea"
+      label="TextArea"
+      name="textarea"
+      placeholder="entet text here..."
+      help="Al least 5 characters"
+      vee-rules="required|alpha|min:5"
+    />
+
+    <code>
       &lt;b-select v-model="selected"
       vee-rules="required|min_value:1|max_value:2" /&gt;
     </code>
@@ -45,16 +57,13 @@
       vee-rules="required|min_value:1|max_value:2"
     />
 
-    <code>
-      &lt;b-select v-model="textarea" vee-rules="required|alpha|min:5" /&gt;
-    </code>
-    <b-textarea
-      v-model="textarea"
-      label="TextArea"
-      name="textarea"
-      placeholder="entet text here..."
-      help="Al least 5 characters"
-      vee-rules="required|alpha|min:5"
+    <b-autocomplete
+      v-model="autocomplete"
+      :options="options"
+      :serializer="(s) => s.text"
+      label="Typeahead"
+      placeholder="Select an option..."
+      vee-rules="required"
     />
   </div>
 </template>
@@ -63,16 +72,18 @@
 import BInput from '~/components/common/form/b-input'
 import BSelect from '~/components/common/form/b-select'
 import BTextarea from '~/components/common/form/b-textarea'
+import BAutocomplete from '~/components/common/form/b-autocomplete'
 
 export default {
   name: 'Demo',
-  components: { BInput, BSelect, BTextarea },
+  components: { BInput, BSelect, BTextarea, BAutocomplete },
   data() {
     return {
       email: '',
       number: 0,
       textarea: '',
       selected: null,
+      autocomplete: null,
       options: [
         { value: 1, text: 'option 1' },
         { value: 2, text: 'option 2' },

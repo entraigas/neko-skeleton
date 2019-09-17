@@ -7,7 +7,6 @@
   >
     <b-field
       :label="label"
-      :name="name"
       :size="size"
       :help="help"
       :state="mVeeCalculateState(props)"
@@ -16,12 +15,9 @@
       <input
         v-model="inputValue"
         :type="type"
-        :name="name"
         :placeholder="placeholder"
         :disabled="!!disabled"
-        :style="inputStyle"
         :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
-        :state="state"
         @input="props.validate"
       />
     </b-field>
@@ -38,19 +34,16 @@ export default {
   components: { ValidationProvider, BField },
   mixins: [VeeValidateMixin],
   props: {
+    // value & unique attributes
     value: {
       type: [String, Number, Boolean],
       default: ''
-    },
-    // input attributes
-    name: {
-      type: String,
-      required: true
     },
     type: {
       type: String,
       default: 'text'
     },
+    // common input attributes
     label: {
       type: String,
       required: false,
@@ -71,10 +64,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    inputStyle: {
-      type: String,
-      default: ''
     },
     // validator attributes
     veeRules: {
@@ -101,7 +90,6 @@ export default {
         this.$emit('input', val)
       }
     }
-  },
-  methods: {}
+  }
 }
 </script>

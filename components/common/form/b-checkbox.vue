@@ -5,14 +5,12 @@
     :rules="veeRules"
     slim
   >
-    <b-field :label="label" :name="name" :size="size" :help="help">
+    <b-field :label="label" :size="size" :help="help">
       <div v-if="isSwitch" class="custom-control custom-switch">
         <input
           v-model="checked"
           type="checkbox"
-          :name="name"
           :class="'custom-control-input' + mVeeSizeClass + mVeeErrorClass"
-          :style="inputStyle"
           :disabled="!!disabled"
         />
         <label class="custom-control-label" @click="onClick">{{
@@ -23,9 +21,7 @@
         <input
           v-model="checked"
           type="checkbox"
-          :name="name"
           :class="'custom-control-input' + mVeeSizeClass + mVeeErrorClass"
-          :style="inputStyle"
           :disabled="!!disabled"
         />
         <label class="custom-control-label" @click="onClick">{{
@@ -46,23 +42,14 @@ export default {
   components: { ValidationProvider, BField },
   mixins: [VeeValidateMixin],
   props: {
+    // value & unique attributes
     value: {
       type: [String, Number, Boolean],
       default: ''
     },
-    // input attributes
-    name: {
-      type: String,
-      required: true
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null
-    },
-    placeholder: {
-      type: String,
-      default: ''
+    isSwitch: {
+      type: Boolean,
+      default: false
     },
     checkedValue: {
       type: [Boolean, String, Number],
@@ -71,6 +58,16 @@ export default {
     uncheckedValue: {
       type: [Boolean, String, Number],
       default: false
+    },
+    // common input attributes
+    label: {
+      type: String,
+      required: false,
+      default: null
+    },
+    placeholder: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
@@ -81,14 +78,6 @@ export default {
       default: ''
     },
     disabled: {
-      type: Boolean,
-      default: false
-    },
-    inputStyle: {
-      type: String,
-      default: ''
-    },
-    isSwitch: {
       type: Boolean,
       default: false
     },

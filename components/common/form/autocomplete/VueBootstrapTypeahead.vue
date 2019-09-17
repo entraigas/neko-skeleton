@@ -71,7 +71,7 @@ export default {
   },
   props: {
     value: {
-      type: String,
+      type: [Object, String, Number],
       default: ''
     },
     data: {
@@ -88,7 +88,7 @@ export default {
     size: {
       type: String,
       default: null,
-      validator: (size) => ['lg', 'sm'].includes(size)
+      validator: (size) => ['lg', 'md', 'sm'].includes(size)
     },
     disabled: {
       type: Boolean,

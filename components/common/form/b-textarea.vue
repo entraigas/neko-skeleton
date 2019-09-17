@@ -7,7 +7,6 @@
   >
     <b-field
       :label="label"
-      :name="name"
       :size="size"
       :help="help"
       :state="mVeeCalculateState(props)"
@@ -15,10 +14,9 @@
     >
       <textarea
         v-model="inputValue"
-        :name="name"
+        :rows="rows"
         :placeholder="placeholder"
         :disabled="!!disabled"
-        :style="inputStyle"
         :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
       />
     </b-field>
@@ -35,15 +33,16 @@ export default {
   components: { ValidationProvider, BField },
   mixins: [VeeValidateMixin],
   props: {
+    // value & unique attributes
     value: {
       type: [String, Number, Boolean],
       default: ''
     },
-    // input attributes
-    name: {
-      type: String,
-      required: true
+    rows: {
+      type: [Number, String],
+      default: null
     },
+    // common input attributes
     label: {
       type: String,
       required: false,
@@ -64,10 +63,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    inputStyle: {
-      type: String,
-      default: ''
     },
     // validator attributes
     veeRules: {
