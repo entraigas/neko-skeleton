@@ -1,11 +1,25 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <div v-if="hasButtons" class="btn-group float-right ml-2" role="group">
-        <button type="button" class="btn btn-secondary" @click="onReset">
+      <div
+        v-show="hasButtons && !collapsed"
+        class="btn-group float-right ml-2"
+        role="group"
+      >
+        <button
+          v-show="!!resetBtn"
+          type="button"
+          class="btn btn-secondary"
+          @click="onReset"
+        >
           {{ resetBtn }}
         </button>
-        <button type="button" class="btn btn-primary" @click="onSave">
+        <button
+          v-show="!!okBtn"
+          type="button"
+          class="btn btn-primary"
+          @click="onSave"
+        >
           {{ okBtn }}
         </button>
       </div>
@@ -78,7 +92,7 @@ export default {
   transition: transform 150ms linear;
 }
 .card-title.open .fa-icon {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
   transition: transform 150ms linear;
 }
 </style>
