@@ -1,9 +1,10 @@
 {
   "name": "neko-skeleton",
   "version": "1.0.0",
-  "description": "empty skeleton frrom neko project",
+  "description": "Empty skeleton frrom neko project",
   "author": "Marcelo Entraigas",
   "private": true,
+  "license": "All wrongs reserved",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -19,7 +20,8 @@
     "lodash": "^4.17.15",
     "nuxt": "^2.0.0",
     "resize-observer-polyfill": "^1.5.1",
-    "vee-validate": "^3.0.5"
+    "vee-validate": "^3.0.5",
+    "vue-awesome": "^3.5.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",

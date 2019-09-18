@@ -29,8 +29,8 @@ export default {
    */
   plugins: [
     '~/plugins/axios',
-    '~/plugins/vee-validate.js'
-    // '~/plugins/default-components.js'
+    '~/plugins/vee-validate.js',
+    '~/plugins/default-components.js'
   ],
   /*
    ** Nuxt.js dev-modules
