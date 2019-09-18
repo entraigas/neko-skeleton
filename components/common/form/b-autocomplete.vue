@@ -10,7 +10,7 @@
       :size="size"
       :help="help"
       :state="calculateState(props)"
-      :error-msg="props.errors[0]"
+      :error-msg="props.errors"
     >
       <vue-bootstrap-typeahead
         v-model="inputValue"

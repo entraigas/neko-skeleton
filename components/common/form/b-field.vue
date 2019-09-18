@@ -5,8 +5,8 @@
     </label>
     <div :class="hasLabel ? 'col-sm-10' : 'col-sm-12'">
       <slot />
-      <div v-if="state === false && errorMsg" class="invalid-feedback">
-        {{ errorMsg }}
+      <div v-if="state === false && hasErrorMsg" class="invalid-feedback">
+        {{ parsedErrorMsg }}
       </div>
       <small v-if="hasHelp" class="form-text text-muted">
         {{ help }}
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { trim } from 'lodash'
+import { trim, isArray } from 'lodash'
 // import VeeValidateMixin from './mixin'
 
 export default {
@@ -44,7 +44,7 @@ export default {
       default: null
     },
     errorMsg: {
-      type: String,
+      type: [String, Array],
       default: ''
     }
   },
@@ -54,6 +54,16 @@ export default {
     },
     hasHelp() {
       return !!trim(this.help).toString().length
+    },
+    hasErrorMsg() {
+      return !!this.parsedErrorMsg.toString().length
+    },
+    parsedErrorMsg() {
+      const errorMsg = this.errorMsg
+      if (isArray(errorMsg)) {
+        return errorMsg.length ? errorMsg.join(', ') : ''
+      }
+      return errorMsg
     },
     sizeClass() {
       if (this.size === 'sm') {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Validation...</h1>
+    <h1>Input Validation</h1>
     <p>
       More validation rulers in
       <a

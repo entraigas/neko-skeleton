@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Input</h1>
+    <h1>Input Controls</h1>
 
     <h2>type</h2>
     <code>

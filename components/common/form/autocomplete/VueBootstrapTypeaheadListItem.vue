@@ -1,6 +1,7 @@
 <template>
   <a tabindex="0" href="#" :class="textClasses">
     <slot name="suggestion" v-bind="{ data: data, htmlText: htmlText }">
+      <!-- eslint-disable-next-line -->
       <span v-html="htmlText"></span>
     </slot>
   </a>
@@ -34,11 +35,6 @@ export default {
 
   computed: {
     textClasses() {
-      // let classes = ''
-      // classes += this.active ? 'active' : ''
-      // classes += this.backgroundVariant ? ` bg-${this.backgroundVariant}` : ''
-      // classes += this.textVariant ? ` text-${this.textVariant}` : ''
-      // return `vbst-item list-group-item list-group-item-action ${classes}`
       const classes = ['vbst-item', 'list-group-item', 'list-group-item-action']
       if (this.active) classes.push('active')
       if (this.backgroundVariant) classes.push(`bg-${this.backgroundVariant}`)

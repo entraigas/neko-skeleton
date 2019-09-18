@@ -10,7 +10,7 @@
       :size="size"
       :help="help"
       :state="mVeeCalculateState(props)"
-      :error-msg="props.errors[0]"
+      :error-msg="props.errors"
     >
       <input
         v-model="inputValue"
