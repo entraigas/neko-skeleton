@@ -1,5 +1,7 @@
 <template>
-  <demo-validation />
+  <div class="container">
+    <demo-validation />
+  </div>
 </template>
 
 <script>

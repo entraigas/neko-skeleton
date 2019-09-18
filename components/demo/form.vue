@@ -1,31 +1,13 @@
 <template>
-  <div class="container">
-    <h1>Form Example</h1>
-
-    <div class="card">
-      <div class="card-header">
-        Form Title
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
+  <card title="Form example"> </card>
 </template>
 
 <script>
-// import BInput from '~/components/common/form/b-input'
-// import BSelect from '~/components/common/form/b-select'
-// import BTextarea from '~/components/common/form/b-textarea'
-// import BAutocomplete from '~/components/common/form/b-autocomplete'
+import Card from '~/components/common/Card'
 
 export default {
   name: 'Demo',
-  // components: { BInput, BSelect, BTextarea, BAutocomplete },
+  components: { Card },
   data() {
     return {
       email: '',

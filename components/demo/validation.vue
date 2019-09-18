@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <h1>Input Validation</h1>
+  <card title="Input Validation" class="my-5">
     <p>
       More validation rulers in
       <a
@@ -65,10 +64,11 @@
       placeholder="Select an option..."
       vee-rules="required"
     />
-  </div>
+  </card>
 </template>
 
 <script>
+import Card from '~/components/common/Card'
 import BInput from '~/components/common/form/b-input'
 import BSelect from '~/components/common/form/b-select'
 import BTextarea from '~/components/common/form/b-textarea'
@@ -76,7 +76,7 @@ import BAutocomplete from '~/components/common/form/b-autocomplete'
 
 export default {
   name: 'Demo',
-  components: { BInput, BSelect, BTextarea, BAutocomplete },
+  components: { Card, BInput, BSelect, BTextarea, BAutocomplete },
   data() {
     return {
       email: '',
