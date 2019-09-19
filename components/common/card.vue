@@ -26,7 +26,9 @@
         </button>
       </div>
       <h3 v-if="collapsible" :class="cardTitleCss">
-        <icon name="sort-down" scale="2" />
+        <span class="pointer" @click="collapsed = !collapsed">
+          <icon name="sort-down" scale="2" />
+        </span>
         <span class="pointer ml-2" @click="collapsed = !collapsed">{{
           title
         }}</span>
