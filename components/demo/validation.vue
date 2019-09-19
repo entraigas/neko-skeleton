@@ -57,6 +57,10 @@
       vee-rules="required|min_value:1|max_value:2"
     />
 
+    <code>
+      &lt;base-autocomplete v-model="autocomplete" :options="options"
+      :serializer="(s) => s.text" vee-rules="required" /&gt;
+    </code>
     <base-autocomplete
       v-model="autocomplete"
       :options="options"

@@ -8,6 +8,7 @@
       >
         <button
           v-show="!!resetBtn"
+          :disabled="resetBtnDisabled"
           type="button"
           class="btn btn-secondary"
           @click="onReset"
@@ -16,6 +17,7 @@
         </button>
         <button
           v-show="!!okBtn"
+          :disabled="okBtnDisabled"
           type="button"
           class="btn btn-primary"
           @click="onSave"
@@ -49,9 +51,17 @@ export default {
       type: String,
       default: null
     },
+    okBtnDisabled: {
+      type: Boolean,
+      default: false
+    },
     resetBtn: {
       type: String,
       default: null
+    },
+    resetBtnDisabled: {
+      type: Boolean,
+      default: false
     },
     collapsible: {
       type: Boolean,
