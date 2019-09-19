@@ -5,7 +5,7 @@
     :rules="veeRules"
     slim
   >
-    <b-field :label="label" :size="size" :help="help">
+    <base-field :label="label" :size="size" :help="help">
       <div v-if="isSwitch" class="custom-control custom-switch">
         <input
           v-model="checked"
@@ -28,18 +28,17 @@
           placeholder
         }}</label>
       </div>
-    </b-field>
+    </base-field>
   </ValidationProvider>
 </template>
 
 <script>
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
-import BField from './b-field'
 
 export default {
-  name: 'BSwitch',
-  components: { ValidationProvider, BField },
+  name: 'BaseCheckbox',
+  components: { ValidationProvider },
   mixins: [VeeValidateMixin],
   props: {
     // value & unique attributes

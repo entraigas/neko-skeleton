@@ -17,12 +17,9 @@
 
 <script>
 import { trim, isArray } from 'lodash'
-// import VeeValidateMixin from './mixin'
 
 export default {
-  name: 'BField',
-  // inject: ['$validator'],
-  // mixins: [VeeValidateMixin],
+  name: 'BaseField',
   props: {
     // input attributes
     label: {

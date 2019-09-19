@@ -5,32 +5,32 @@
     :rules="veeRules"
     slim
   >
-    <b-field
+    <base-field
       :label="label"
       :size="size"
       :help="help"
       :state="mVeeCalculateState(props)"
       :error-msg="props.errors"
     >
-      <textarea
+      <input
         v-model="inputValue"
-        :rows="rows"
+        :type="type"
         :placeholder="placeholder"
         :disabled="!!disabled"
         :class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+        @input="props.validate"
       />
-    </b-field>
+    </base-field>
   </ValidationProvider>
 </template>
 
 <script>
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
-import BField from './b-field'
 
 export default {
-  name: 'BTextarea',
-  components: { ValidationProvider, BField },
+  name: 'BaseInput',
+  components: { ValidationProvider },
   mixins: [VeeValidateMixin],
   props: {
     // value & unique attributes
@@ -38,9 +38,9 @@ export default {
       type: [String, Number, Boolean],
       default: ''
     },
-    rows: {
-      type: [Number, String],
-      default: null
+    type: {
+      type: String,
+      default: 'text'
     },
     // common input attributes
     label: {

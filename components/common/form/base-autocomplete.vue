@@ -31,11 +31,11 @@
 // import { ValidationProvider, extend } from 'vee-validate'
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
-import BField from './b-field'
+import BField from './base-field'
 import VueBootstrapTypeahead from './autocomplete/VueBootstrapTypeahead'
 
 export default {
-  name: 'BAutocomplete',
+  name: 'BaseAutocomplete',
   components: { ValidationProvider, BField, VueBootstrapTypeahead },
   mixins: [VeeValidateMixin],
   props: {

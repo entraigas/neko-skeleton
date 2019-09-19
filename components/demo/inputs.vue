@@ -2,51 +2,52 @@
   <div>
     <card title="Input type" class="my-5">
       <code>
-        &lt;b-input v-model="text" /&gt;
+        &lt;base-input v-model="text" /&gt;
       </code>
-      <b-input v-model="text" name="text" />
+      <base-input v-model="text" name="text" />
 
       <code>
-        &lt;b-input v-model="email" type="email" /&gt;
+        &lt;base-input v-model="email" type="email" /&gt;
       </code>
-      <b-input v-model="email" name="email" type="email" />
+      <base-input v-model="email" name="email" type="email" />
 
       <code>
-        &lt;b-input v-model="password" type="password" /&gt;
+        &lt;base-input v-model="password" type="password" /&gt;
       </code>
-      <b-input v-model="password" name="password" type="password" />
+      <base-input v-model="password" name="password" type="password" />
 
       <code>
-        &lt;b-input v-model="number" type="number" /&gt;
+        &lt;base-input v-model="number" type="number" /&gt;
       </code>
-      <b-input v-model="number" type="number" name="age" />
+      <base-input v-model="number" type="number" name="age" />
 
       <code>
-        &lt;b-input v-model="number" type="range" /&gt;
+        &lt;base-input v-model="number" type="range" /&gt;
       </code>
-      <b-input v-model="number" name="password" type="range" />
+      <base-input v-model="number" name="password" type="range" />
     </card>
 
     <card title="Input label, disabled, placeholder &amp; help" class="my-5">
       <code>
-        &lt;b-input v-model="text" /&gt;
+        &lt;base-input v-model="text" /&gt;
       </code>
-      <b-input v-model="text" name="text" />
+      <base-input v-model="text" name="text" />
 
       <code>
-        &lt;b-input v-model="text" label="Name" /&gt;
+        &lt;base-input v-model="text" label="Name" /&gt;
       </code>
-      <b-input v-model="text" name="text" label="Name" />
+      <base-input v-model="text" name="text" label="Name" />
 
       <code>
-        &lt;b-input v-model="text" label="Name" disabled /&gt;
+        &lt;base-input v-model="text" label="Name" disabled /&gt;
       </code>
-      <b-input v-model="text" name="text" label="Name" disabled />
+      <base-input v-model="text" name="text" label="Name" disabled />
 
       <code>
-        &lt;b-input v-model="text" label="Name" placeholder="some text..." /&gt;
+        &lt;base-input v-model="text" label="Name" placeholder="some text..."
+        /&gt;
       </code>
-      <b-input
+      <base-input
         v-model="text"
         name="text"
         label="Name"
@@ -54,10 +55,10 @@
       />
 
       <code>
-        &lt;b-input v-model="text" label="Name" placeholder="some text..."
+        &lt;base-input v-model="text" label="Name" placeholder="some text..."
         help="At least 6 characters"/&gt;
       </code>
-      <b-input
+      <base-input
         v-model="text"
         name="text"
         label="Name"
@@ -72,22 +73,22 @@
         <mark>lg</mark> sizes. By default use md
       </p>
       <code>
-        &lt;b-input v-model="text" label="Name" size="[sm|md|lg]" /&gt;
+        &lt;base-input v-model="text" label="Name" size="[sm|md|lg]" /&gt;
       </code>
-      <b-input
+      <base-input
         v-model="text"
         name="text"
         label="Name"
         size="sm"
         placeholder="sm"
       />
-      <b-input
+      <base-input
         v-model="text"
         name="text"
         label="Name"
         placeholder="by default use md"
       />
-      <b-input
+      <base-input
         v-model="text"
         name="text"
         label="Name"
@@ -111,10 +112,10 @@
 
     <card title="Checkbox &amp; Switch" class="my-5">
       <code>
-        &lt;b-checkbox v-model="check" label="Checkbox" placeholder="Enable
+        &lt;base-checkbox v-model="check" label="Checkbox" placeholder="Enable
         feature" /&gt;
       </code>
-      <b-checkbox
+      <base-checkbox
         v-model="check"
         name="switch"
         label="Checkbox"
@@ -122,10 +123,10 @@
       />
 
       <code>
-        &lt;b-checkbox v-model="check" label="Switchbox" placeholder="Enable
+        &lt;base-checkbox v-model="check" label="Switchbox" placeholder="Enable
         feature" is-switch /&gt;
       </code>
-      <b-checkbox
+      <base-checkbox
         v-model="check"
         name="check"
         label="Switchbox"
@@ -136,10 +137,10 @@
 
     <card title="Select" class="my-5">
       <code>
-        &lt;b-select v-model="selected" :options="[{value, text}, {value, text}]
-        first="Select an option..." /&gt;
+        &lt;base-select v-model="selected" :options="[{value, text}, {value,
+        text}] first="Select an option..." /&gt;
       </code>
-      <b-select
+      <base-select
         v-model="selected"
         :options="options"
         label="Select"
@@ -150,11 +151,11 @@
 
     <card title="Autocomplete" class="my-5">
       <code>
-        &lt;b-autocomplete v-model="selected" :options="[{value, text}, {value,
-        text}] :serializer="(s) => s.text" label="Typeahead" placeholder="Select
-        an option..." help="At least 2 characters" /&gt;
+        &lt;base-autocomplete v-model="selected" :options="[{value, text},
+        {value, text}] :serializer="(s) => s.text" label="Typeahead"
+        placeholder="Select an option..." help="At least 2 characters" /&gt;
       </code>
-      <b-autocomplete
+      <base-autocomplete
         v-model="ac"
         :options="options"
         :serializer="(s) => s.text"
@@ -168,16 +169,11 @@
 </template>
 
 <script>
-import Card from '~/components/common/Card'
-import BInput from '~/components/common/form/b-input'
-import BSelect from '~/components/common/form/b-select'
-import BTextarea from '~/components/common/form/b-textarea'
-import BCheckbox from '~/components/common/form/b-checkbox'
-import BAutocomplete from '~/components/common/form/b-autocomplete'
+import Card from '~/components/common/card'
 
 export default {
   name: 'Demo',
-  components: { Card, BInput, BSelect, BTextarea, BCheckbox, BAutocomplete },
+  components: { Card },
   data() {
     return {
       text: '',

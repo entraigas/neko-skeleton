@@ -9,9 +9,9 @@
     </p>
 
     <code>
-      &lt;b-input v-model="email" vee-rules="required|email" /&gt;
+      &lt;base-input v-model="email" vee-rules="required|email" /&gt;
     </code>
-    <b-input
+    <base-input
       v-model="email"
       type="email"
       name="email"
@@ -21,9 +21,9 @@
     />
 
     <code>
-      &lt;b-input v-model="number" vee-rules="required|digits:1" /&gt;
+      &lt;base-input v-model="number" vee-rules="required|digits:1" /&gt;
     </code>
-    <b-input
+    <base-input
       v-model="number"
       type="number"
       name="number"
@@ -32,9 +32,10 @@
     />
 
     <code>
-      &lt;b-select v-model="textarea" vee-rules="required|alpha|min:5" /&gt;
+      &lt;base-textarea v-model="textarea" vee-rules="required|alpha|min:5"
+      /&gt;
     </code>
-    <b-textarea
+    <base-textarea
       v-model="textarea"
       label="TextArea"
       name="textarea"
@@ -44,10 +45,10 @@
     />
 
     <code>
-      &lt;b-select v-model="selected"
+      &lt;base-select v-model="selected"
       vee-rules="required|min_value:1|max_value:2" /&gt;
     </code>
-    <b-select
+    <base-select
       v-model="selected"
       :options="options"
       name="select"
@@ -56,7 +57,7 @@
       vee-rules="required|min_value:1|max_value:2"
     />
 
-    <b-autocomplete
+    <base-autocomplete
       v-model="autocomplete"
       :options="options"
       :serializer="(s) => s.text"
@@ -68,15 +69,11 @@
 </template>
 
 <script>
-import Card from '~/components/common/Card'
-import BInput from '~/components/common/form/b-input'
-import BSelect from '~/components/common/form/b-select'
-import BTextarea from '~/components/common/form/b-textarea'
-import BAutocomplete from '~/components/common/form/b-autocomplete'
+import Card from '~/components/common/card'
 
 export default {
   name: 'Demo',
-  components: { Card, BInput, BSelect, BTextarea, BAutocomplete },
+  components: { Card },
   data() {
     return {
       email: '',

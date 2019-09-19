@@ -2,13 +2,13 @@
   <card title="Form example" ok-btn="Save" reset-btn="Reset">
     <b-row>
       <b-col>
-        <b-input
+        <base-input
           v-model="email"
           label="Name"
           placeholder="john foo"
           vee-rules="required|min:5"
         />
-        <b-input
+        <base-input
           v-model="email"
           type="email"
           name="email"
@@ -18,7 +18,7 @@
         />
       </b-col>
       <b-col>
-        <b-input
+        <base-input
           v-model="number"
           type="number"
           label="Age"
@@ -30,12 +30,11 @@
 </template>
 
 <script>
-import Card from '~/components/common/Card'
-import BInput from '~/components/common/form/b-input'
+import Card from '~/components/common/card'
 
 export default {
   name: 'Demo',
-  components: { Card, BInput },
+  components: { Card },
   data() {
     return {
       email: '',

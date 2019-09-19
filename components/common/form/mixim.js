@@ -23,12 +23,19 @@ export default {
   },
   methods: {
     mVeeCalculateState(props) {
+      // const calculateOriginal = (props) => {
+      //   const { untouched = false, changed = false, validated = false } = props
+      //   if ((untouched || changed) && !validated) {
+      //     return null
+      //   }
+      //   return props.valid
+      // }
       const calculate = (props) => {
-        const { untouched = false, changed = false, validated = false } = props
-        if ((untouched || changed) && !validated) {
-          return null
+        const { errors, valid, touched, changed } = props
+        if (errors[0]) {
+          return false
         }
-        return props.valid
+        return (touched || changed) && valid ? true : null
       }
       this.state = calculate(props)
       return this.state

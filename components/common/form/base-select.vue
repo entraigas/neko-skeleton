@@ -5,7 +5,7 @@
     :rules="veeRules"
     slim
   >
-    <b-field
+    <base-field
       :label="label"
       :size="size"
       :help="help"
@@ -26,18 +26,17 @@
           >{{ item.text }}</option
         >
       </select>
-    </b-field>
+    </base-field>
   </ValidationProvider>
 </template>
 
 <script>
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
-import BField from './b-field'
 
 export default {
-  name: 'BInput',
-  components: { ValidationProvider, BField },
+  name: 'BaseSelect',
+  components: { ValidationProvider },
   mixins: [VeeValidateMixin],
   props: {
     // value & unique attributes
