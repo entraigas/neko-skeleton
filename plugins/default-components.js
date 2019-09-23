@@ -7,8 +7,8 @@ import BaseCheckbox from '~/components/common/form/base-checkbox'
 import BaseAutocomplete from '~/components/common/form/base-autocomplete'
 import BaseField from '~/components/common/form/base-field'
 
-Vue.component('icon', Icon)
-// <icon name="sort-down" />
+Vue.component('v-icon', Icon)
+// <v-icon name="sort-down" />
 Vue.component(BaseInput.name, BaseInput)
 Vue.component(BaseSelect.name, BaseSelect)
 Vue.component(BaseTextarea.name, BaseTextarea)

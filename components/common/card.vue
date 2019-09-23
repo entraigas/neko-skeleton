@@ -25,9 +25,9 @@
           {{ okBtn }}
         </button>
       </div>
-      <h3 v-if="collapsible" :class="cardTitleCss">
-        <span class="pointer" @click="collapsed = !collapsed">
-          <icon name="sort-down" scale="2" />
+      <h3 v-if="collapsible" class="card-title">
+        <span :class="cardCollapseCss" @click="collapsed = !collapsed">
+          <v-icon name="sort-down" />
         </span>
         <span class="pointer ml-2" @click="collapsed = !collapsed">{{
           title
@@ -79,8 +79,8 @@ export default {
     hasButtons() {
       return !!this.okBtn || !!this.resetBtn
     },
-    cardTitleCss() {
-      const css = ['card-title']
+    cardCollapseCss() {
+      const css = ['pointer', 'card-icon']
       if (this.collapsed) {
         css.push('open')
       }
@@ -99,11 +99,13 @@ export default {
 </script>
 
 <style>
-.card-title .fa-icon {
+.card-icon .fa-icon {
+  vertical-align: top !important;
   transform: rotate(0deg);
   transition: transform 150ms linear;
 }
-.card-title.open .fa-icon {
+.open .fa-icon {
+  vertical-align: middle !important;
   transform: rotate(-180deg);
   transition: transform 150ms linear;
 }

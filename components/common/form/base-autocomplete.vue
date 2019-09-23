@@ -13,7 +13,6 @@
         :state="calculateState(props)"
         :error-msg="props.errors"
       >
-        {{ props }}
         <vue-bootstrap-typeahead
           v-model="inputValue"
           :data="options"
