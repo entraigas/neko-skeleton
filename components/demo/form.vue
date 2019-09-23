@@ -89,7 +89,9 @@ export default {
     },
     onReset() {
       this.record = cloneDeep(this.recordSnapshot)
-      this.$refs.frmExampe.reset()
+      requestAnimationFrame(() => {
+        this.$refs.frmExampe.reset()
+      })
     }
   }
 }

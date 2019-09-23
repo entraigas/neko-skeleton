@@ -1,30 +1,33 @@
 <template>
-  <ValidationProvider
-    ref="autocompete"
-    v-slot="props"
-    :name="veeLabel || label"
-    :rules="veeRules"
-  >
-    <b-field
-      :label="label"
-      :size="size"
-      :help="help"
-      :state="calculateState(props)"
-      :error-msg="props.errors"
+  <div>
+    <ValidationProvider
+      ref="autocompete"
+      v-slot="props"
+      :name="veeLabel || label"
+      :rules="veeRules"
     >
-      <vue-bootstrap-typeahead
-        v-model="inputValue"
-        :data="options"
-        :serializer="serializer"
-        :placeholder="placeholder"
-        :disabled="!!disabled"
-        :input-class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+      <b-field
+        :label="label"
         :size="size"
-        @input="selected = null"
-        @hit="onSelect"
-      />
-    </b-field>
-  </ValidationProvider>
+        :help="help"
+        :state="calculateState(props)"
+        :error-msg="props.errors"
+      >
+        {{ props }}
+        <vue-bootstrap-typeahead
+          v-model="inputValue"
+          :data="options"
+          :serializer="serializer"
+          :placeholder="placeholder"
+          :disabled="!!disabled"
+          :input-class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+          :size="size"
+          @input="selected = null"
+          @hit="onHitAutocomplete"
+        />
+      </b-field>
+    </ValidationProvider>
+  </div>
 </template>
 
 <script>
@@ -122,7 +125,7 @@ export default {
       }
       return this.state
     },
-    onSelect(value) {
+    onHitAutocomplete(value) {
       this.$refs.autocompete.validate()
       this.selected = value
       this.$emit('hit', value)

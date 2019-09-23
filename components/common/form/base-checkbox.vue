@@ -3,7 +3,6 @@
     v-slot="props"
     :name="veeLabel || label"
     :rules="veeRules"
-    slim
   >
     <base-field :label="label" :size="size" :help="help">
       <div v-if="isSwitch" class="custom-control custom-switch">
