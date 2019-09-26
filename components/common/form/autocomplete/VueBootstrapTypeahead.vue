@@ -10,7 +10,6 @@
           <span class="input-group-text">{{ prepend }}</span>
         </slot>
       </div>
-      isFocused = {{ isFocused }}
       <input
         ref="input"
         type="search"
@@ -172,10 +171,8 @@ export default {
     resizeList(el) {
       const rect = el.getBoundingClientRect()
       const listStyle = this.$refs.list.$el.style
-
       // Set the width of the list on resize
       listStyle.width = rect.width + 'px'
-
       // Set the margin when the prepend prop or slot is populated
       // (setting the "left" CSS property doesn't work)
       if (this.$refs.prependDiv) {

@@ -125,7 +125,6 @@ export default {
       return this.state
     },
     onBlur() {
-      // console.log('pasoooo')
       this.$refs.autocompete.validate()
     },
     onChange() {

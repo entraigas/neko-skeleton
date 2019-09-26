@@ -1,6 +1,6 @@
 <template>
   <div>
-    <card title="Input type" class="my-5">
+    <card title="Input types" class="my-5">
       <code>
         &lt;base-input v-model="text" /&gt;
       </code>
@@ -27,7 +27,10 @@
       <base-input v-model="number" name="password" type="range" />
     </card>
 
-    <card title="Input label, disabled, placeholder &amp; help" class="my-5">
+    <card
+      title="Input props: label, disabled, placeholder &amp; help"
+      class="my-5"
+    >
       <code>
         &lt;base-input v-model="text" /&gt;
       </code>
@@ -67,7 +70,7 @@
       />
     </card>
 
-    <card title="Input size" class="my-5">
+    <card title="Input sizes" class="my-5">
       <p>
         You can use <mark>sm</mark>, <mark>md</mark> &amp;
         <mark>lg</mark> sizes. By default use md
