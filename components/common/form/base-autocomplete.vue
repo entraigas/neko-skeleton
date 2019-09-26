@@ -19,9 +19,10 @@
           :serializer="serializer"
           :placeholder="placeholder"
           :disabled="!!disabled"
-          :input-class="'form-control' + mVeeSizeClass + mVeeErrorClass"
+          :input-class="mVeeSizeClass + mVeeErrorClass"
           :size="size"
-          @input="selected = null"
+          @blur="onBlur"
+          @input="onChange"
           @hit="onHitAutocomplete"
         />
       </b-field>
@@ -30,7 +31,6 @@
 </template>
 
 <script>
-// import { ValidationProvider, extend } from 'vee-validate'
 import { ValidationProvider } from 'vee-validate'
 import VeeValidateMixin from './mixim'
 import BField from './base-field'
@@ -123,6 +123,13 @@ export default {
         this.state = state && this.isSelected
       }
       return this.state
+    },
+    onBlur() {
+      // console.log('pasoooo')
+      this.$refs.autocompete.validate()
+    },
+    onChange() {
+      this.selected = false
     },
     onHitAutocomplete(value) {
       this.$refs.autocompete.validate()

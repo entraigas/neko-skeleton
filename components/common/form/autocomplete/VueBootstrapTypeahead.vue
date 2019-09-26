@@ -10,6 +10,7 @@
           <span class="input-group-text">{{ prepend }}</span>
         </slot>
       </div>
+      isFocused = {{ isFocused }}
       <input
         ref="input"
         type="search"
@@ -25,6 +26,7 @@
         @keyup.down="$emit('keyup.down', $event.target.value)"
         @keyup.up="$emit('keyup.up', $event.target.value)"
         @keyup.enter="$emit('keyup.enter', $event.target.value)"
+        @keydown.esc="isFocused = false"
       />
       <div v-if="$slots.append || append" class="input-group-append">
         <slot name="append">
@@ -199,11 +201,12 @@ export default {
         return
       }
       this.isFocused = false
+      this.$emit('blur')
     },
 
     handleInput(newValue) {
+      this.isFocused = true
       this.inputValue = newValue
-
       // If v-model is being used, emit an input event
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
