@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import { trim, isArray } from 'lodash'
+import { trim, isArray } from "lodash";
 
 export default {
-  name: 'BaseField',
+  name: "BaseField",
   props: {
     // input attributes
     label: {
@@ -29,7 +29,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'md'
+      default: "md"
     },
     help: {
       type: String,
@@ -42,35 +42,35 @@ export default {
     },
     errorMsg: {
       type: [String, Array],
-      default: ''
+      default: ""
     }
   },
   computed: {
     hasLabel() {
-      return !!trim(this.label).toString().length
+      return !!trim(this.label).toString().length;
     },
     hasHelp() {
-      return !!trim(this.help).toString().length
+      return !!trim(this.help).toString().length;
     },
     hasErrorMsg() {
-      return !!this.parsedErrorMsg.toString().length
+      return !!this.parsedErrorMsg.toString().length;
     },
     parsedErrorMsg() {
-      const errorMsg = this.errorMsg
+      const errorMsg = this.errorMsg;
       if (isArray(errorMsg)) {
-        return errorMsg.length ? errorMsg.join(', ') : ''
+        return errorMsg.length ? errorMsg.join(", ") : "";
       }
-      return errorMsg
+      return errorMsg;
     },
     sizeClass() {
-      if (this.size === 'sm') {
-        return ' col-form-label-sm'
+      if (this.size === "sm") {
+        return " col-form-label-sm";
       }
-      if (this.size === 'lg') {
-        return ' col-form-label-lg'
+      if (this.size === "lg") {
+        return " col-form-label-lg";
       }
-      return ''
+      return "";
     }
   }
-}
+};
 </script>

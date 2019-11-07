@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import DemoInputs from '~/components/demo/inputs'
+import DemoInputs from "~/components/demo/inputs";
 
 export default {
   components: { DemoInputs },
   data() {
-    return {}
+    return {};
   }
-}
+};
 </script>

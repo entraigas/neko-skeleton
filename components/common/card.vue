@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: 'Card',
+  name: "Card",
   props: {
     title: {
       type: String,
@@ -73,32 +73,32 @@ export default {
   data() {
     return {
       collapsed: false
-    }
+    };
   },
   computed: {
     hasButtons() {
-      return !!this.okBtn || !!this.resetBtn
+      return !!this.okBtn || !!this.resetBtn;
     },
     cardCollapseCss() {
-      const css = ['pointer', 'card-icon']
+      const css = ["pointer", "card-icon"];
       if (this.collapsed) {
-        css.push('open')
+        css.push("open");
       }
-      return css.join(' ')
+      return css.join(" ");
     }
   },
   methods: {
     onSave() {
-      this.$emit('save')
+      this.$emit("save");
     },
     onReset() {
-      this.$emit('reset')
+      this.$emit("reset");
     }
   }
-}
+};
 </script>
 
-<style>
+<style scoped>
 .card-icon .fa-icon {
   vertical-align: top !important;
   transform: rotate(0deg);
@@ -108,5 +108,10 @@ export default {
   vertical-align: middle !important;
   transform: rotate(-180deg);
   transition: transform 150ms linear;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 </style>

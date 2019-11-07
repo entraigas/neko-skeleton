@@ -6,6 +6,8 @@
       :name="veeLabel || label"
       :rules="veeRules"
     >
+      veeRules = {{ veeRules }} <br />
+      state = {{ state }}
       <b-field
         :label="label"
         :size="size"
@@ -26,18 +28,19 @@
           @hit="onHitAutocomplete"
         />
       </b-field>
+      {{ props }}
     </ValidationProvider>
   </div>
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
-import VeeValidateMixin from './mixim'
-import BField from './base-field'
-import VueBootstrapTypeahead from './autocomplete/VueBootstrapTypeahead'
+import { ValidationProvider } from "vee-validate";
+import VeeValidateMixin from "./mixim";
+import BField from "./base-field";
+import VueBootstrapTypeahead from "./autocomplete/VueBootstrapTypeahead";
 
 export default {
-  name: 'BaseAutocomplete',
+  name: "BaseAutocomplete",
   components: { ValidationProvider, BField, VueBootstrapTypeahead },
   mixins: [VeeValidateMixin],
   props: {
@@ -52,8 +55,8 @@ export default {
     },
     serializer: {
       type: Function,
-      default: (d) => d,
-      validator: (d) => d instanceof Function
+      default: d => d,
+      validator: d => d instanceof Function
     },
     // common input attributes
     label: {
@@ -63,15 +66,15 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ''
+      default: ""
     },
     size: {
       type: String,
-      default: 'md'
+      default: "md"
     },
     help: {
       type: String,
-      default: ''
+      default: ""
     },
     disabled: {
       type: Boolean,
@@ -92,49 +95,45 @@ export default {
     return {
       state: null,
       selected: null
-    }
+    };
   },
   computed: {
     inputValue: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit("input", val);
       }
     },
     isSelected() {
-      return !!this.selected
+      return !!this.selected;
     }
   },
   methods: {
     calculateState(props) {
-      const calculate = (props) => {
-        const { untouched = false, changed = false, validated = false } = props
+      const calculate = props => {
+        const { untouched = false, changed = false, validated = false } = props;
         if ((untouched || changed) && !validated) {
-          return null
+          return null;
         }
-        return props.valid
-      }
-      const state = calculate(props)
-      if (state === null) {
-        this.state = null
-      } else {
-        this.state = state && this.isSelected
-      }
-      return this.state
+        return props.valid;
+      };
+      const state = calculate(props);
+      this.state = state === null ? null : state && this.isSelected;
+      return this.state;
     },
     onBlur() {
-      this.$refs.autocompete.validate()
+      this.$refs.autocompete.validate();
     },
     onChange() {
-      this.selected = false
+      this.selected = false;
     },
     onHitAutocomplete(value) {
-      this.$refs.autocompete.validate()
-      this.selected = value
-      this.$emit('hit', value)
+      this.$refs.autocompete.validate();
+      this.selected = value;
+      this.$emit("hit", value);
     }
   }
-}
+};
 </script>

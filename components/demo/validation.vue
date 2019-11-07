@@ -64,7 +64,7 @@
     <base-autocomplete
       v-model="autocomplete"
       :options="options"
-      :serializer="(s) => s.text"
+      :serializer="s => s.text"
       label="Typeahead"
       placeholder="Select an option..."
       vee-rules="required"
@@ -73,25 +73,25 @@
 </template>
 
 <script>
-import Card from '~/components/common/card'
+import Card from "~/components/common/card";
 
 export default {
-  name: 'Demo',
+  name: "Demo",
   components: { Card },
   data() {
     return {
-      email: '',
+      email: "",
       number: 0,
-      textarea: '',
+      textarea: "",
       selected: null,
       autocomplete: null,
       options: [
-        { value: 1, text: 'option 1' },
-        { value: 2, text: 'option 2' },
-        { value: 3, text: 'option 3' },
-        { value: 4, text: 'option 4' }
+        { value: 1, text: "option 1" },
+        { value: 2, text: "option 2" },
+        { value: 3, text: "option 3" },
+        { value: 4, text: "option 4" }
       ]
-    }
+    };
   }
-}
+};
 </script>

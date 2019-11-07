@@ -161,7 +161,7 @@
       <base-autocomplete
         v-model="ac"
         :options="options"
-        :serializer="(s) => s.text"
+        :serializer="s => s.text"
         label="Typeahead"
         placeholder="Select an option..."
         help="At least 2 characters"
@@ -172,34 +172,34 @@
 </template>
 
 <script>
-import Card from '~/components/common/card'
+import Card from "~/components/common/card";
 
 export default {
-  name: 'Demo',
+  name: "Demo",
   components: { Card },
   data() {
     return {
-      text: '',
-      password: '',
-      email: '',
+      text: "",
+      password: "",
+      email: "",
       number: 0,
       ac: null,
       selected: null,
       options: [
-        { value: 1, text: 'option 1' },
-        { value: 2, text: 'option 2' },
-        { value: 3, text: 'option 3' },
-        { value: 4, text: 'option 4' }
+        { value: 1, text: "option 1" },
+        { value: 2, text: "option 2" },
+        { value: 3, text: "option 3" },
+        { value: 4, text: "option 4" }
       ],
       check: true
-    }
+    };
   },
   methods: {
     onSelect(value) {
-      alert(JSON.stringify(value))
+      alert(JSON.stringify(value));
     }
   }
-}
+};
 </script>
 
 <style>

@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import DemoValidation from '~/components/demo/validation'
+import DemoValidation from "~/components/demo/validation";
 export default {
   components: { DemoValidation },
   data() {
-    return {}
+    return {};
   }
-}
+};
 </script>

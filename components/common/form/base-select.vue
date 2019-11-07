@@ -30,18 +30,18 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
-import VeeValidateMixin from './mixim'
+import { ValidationProvider } from "vee-validate";
+import VeeValidateMixin from "./mixim";
 
 export default {
-  name: 'BaseSelect',
+  name: "BaseSelect",
   components: { ValidationProvider },
   mixins: [VeeValidateMixin],
   props: {
     // value & unique attributes
     value: {
       type: [String, Number, Boolean],
-      default: ''
+      default: ""
     },
     options: {
       type: Array,
@@ -49,7 +49,7 @@ export default {
     },
     first: {
       type: [String, Number],
-      default: ''
+      default: ""
     },
     // common input attributes
     label: {
@@ -59,11 +59,11 @@ export default {
     },
     size: {
       type: String,
-      default: 'md'
+      default: "md"
     },
     help: {
       type: String,
-      default: ''
+      default: ""
     },
     disabled: {
       type: Boolean,
@@ -83,17 +83,17 @@ export default {
   data() {
     return {
       state: null
-    }
+    };
   },
   computed: {
     inputValue: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit("input", val);
       }
     }
   }
-}
+};
 </script>

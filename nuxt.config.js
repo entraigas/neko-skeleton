@@ -1,43 +1,43 @@
 export default {
-  mode: 'spa',
+  mode: "spa",
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: process.env.npm_package_name || "",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: "#fff" },
   /*
    ** Global CSS
    */
-  css: ['@/assets/scss/app.scss'],
+  css: ["@/assets/scss/app.scss"],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/axios',
-    '~/plugins/vee-validate.js',
-    '~/plugins/default-components.js'
+    "~/plugins/axios",
+    "~/plugins/vee-validate.js",
+    "~/plugins/default-components.js"
   ],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    "@nuxtjs/eslint-module"
   ],
   /*
    ** Nuxt.js modules
@@ -46,8 +46,8 @@ export default {
     // Doc: https://bootstrap-vue.js.org/docs/
     // 'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    'bootstrap-vue/nuxt'
+    "@nuxtjs/axios",
+    "bootstrap-vue/nuxt"
   ],
   /*
    ** Axios module configuration
@@ -66,17 +66,17 @@ export default {
      ** You can extend webpack config here
      */
     // Add exception
-    transpile: ['vee-validate/dist/rules'],
+    transpile: ["vee-validate/dist/rules"],
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          loader: "eslint-loader",
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   }
-}
+};

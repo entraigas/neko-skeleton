@@ -32,18 +32,18 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
-import VeeValidateMixin from './mixim'
+import { ValidationProvider } from "vee-validate";
+import VeeValidateMixin from "./mixim";
 
 export default {
-  name: 'BaseCheckbox',
+  name: "BaseCheckbox",
   components: { ValidationProvider },
   mixins: [VeeValidateMixin],
   props: {
     // value & unique attributes
     value: {
       type: [String, Number, Boolean],
-      default: ''
+      default: ""
     },
     isSwitch: {
       type: Boolean,
@@ -65,15 +65,15 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ''
+      default: ""
     },
     size: {
       type: String,
-      default: 'md'
+      default: "md"
     },
     help: {
       type: String,
-      default: ''
+      default: ""
     },
     disabled: {
       type: Boolean,
@@ -94,31 +94,31 @@ export default {
     return {
       state: null,
       checked: null
-    }
+    };
   },
   computed: {
     inputValue: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit("input", val);
       }
     }
   },
   watch: {
     inputValue: {
       handler(value) {
-        this.checked = value === this.checkedValue
+        this.checked = value === this.checkedValue;
       },
       immediate: true
     }
   },
   methods: {
     onClick() {
-      const value = this.checked ? this.uncheckedValue : this.checkedValue
-      this.$emit('input', value)
+      const value = this.checked ? this.uncheckedValue : this.checkedValue;
+      this.$emit("input", value);
     }
   }
-}
+};
 </script>

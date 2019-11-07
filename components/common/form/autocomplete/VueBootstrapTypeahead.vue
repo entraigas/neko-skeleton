@@ -62,34 +62,34 @@
 </template>
 
 <script>
-import ResizeObserver from 'resize-observer-polyfill'
-import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
+import ResizeObserver from "resize-observer-polyfill";
+import VueBootstrapTypeaheadList from "./VueBootstrapTypeaheadList.vue";
 
 export default {
-  name: 'VueBootstrapTypehead',
+  name: "VueBootstrapTypehead",
   components: {
     VueBootstrapTypeaheadList
   },
   props: {
     value: {
       type: [Object, String, Number],
-      default: ''
+      default: ""
     },
     data: {
       type: Array,
       required: true,
       default: () => [],
-      validator: (d) => Array.isArray(d)
+      validator: d => Array.isArray(d)
     },
     serializer: {
       type: Function,
-      default: (d) => d,
-      validator: (d) => d instanceof Function
+      default: d => d,
+      validator: d => d instanceof Function
     },
     size: {
       type: String,
       default: null,
-      validator: (size) => ['lg', 'md', 'sm'].includes(size)
+      validator: size => ["lg", "md", "sm"].includes(size)
     },
     disabled: {
       type: Boolean,
@@ -105,7 +105,7 @@ export default {
     },
     inputClass: {
       type: String,
-      default: ''
+      default: ""
     },
     maxMatches: {
       type: Number,
@@ -132,85 +132,85 @@ export default {
   data() {
     return {
       isFocused: false,
-      inputValue: this.value || ''
-    }
+      inputValue: this.value || ""
+    };
   },
 
   computed: {
     sizeClasses() {
-      return this.size ? `input-group input-group-${this.size}` : 'input-group'
+      return this.size ? `input-group input-group-${this.size}` : "input-group";
     },
 
     formattedData() {
       if (!Array.isArray(this.data)) {
-        return []
+        return [];
       }
       return this.data.map((d, i) => {
         return {
           id: i,
           data: d,
           text: this.serializer(d)
-        }
-      })
+        };
+      });
     }
   },
 
   mounted() {
-    this.$_ro = new ResizeObserver((e) => {
-      this.resizeList(this.$refs.input)
-    })
-    this.$_ro.observe(this.$refs.input)
-    this.$_ro.observe(this.$refs.list.$el)
+    this.$_ro = new ResizeObserver(e => {
+      this.resizeList(this.$refs.input);
+    });
+    this.$_ro.observe(this.$refs.input);
+    this.$_ro.observe(this.$refs.list.$el);
   },
 
   beforeDestroy() {
-    this.$_ro.disconnect()
+    this.$_ro.disconnect();
   },
 
   methods: {
     resizeList(el) {
-      const rect = el.getBoundingClientRect()
-      const listStyle = this.$refs.list.$el.style
+      const rect = el.getBoundingClientRect();
+      const listStyle = this.$refs.list.$el.style;
       // Set the width of the list on resize
-      listStyle.width = rect.width + 'px'
+      listStyle.width = rect.width + "px";
       // Set the margin when the prepend prop or slot is populated
       // (setting the "left" CSS property doesn't work)
       if (this.$refs.prependDiv) {
-        const prependRect = this.$refs.prependDiv.getBoundingClientRect()
-        listStyle.marginLeft = prependRect.width + 'px'
+        const prependRect = this.$refs.prependDiv.getBoundingClientRect();
+        listStyle.marginLeft = prependRect.width + "px";
       }
     },
 
     handleHit(evt) {
-      if (typeof this.value !== 'undefined') {
-        this.$emit('input', evt.text)
+      if (typeof this.value !== "undefined") {
+        this.$emit("input", evt.text);
       }
 
-      this.inputValue = evt.text
-      this.$emit('hit', evt.data)
-      this.$refs.input.blur()
-      this.isFocused = false
+      this.inputValue = evt.text;
+      this.$emit("hit", evt.data);
+      this.$refs.input.blur();
+      this.isFocused = false;
     },
 
     handleBlur(evt) {
-      const tgt = evt.relatedTarget
-      if (tgt && tgt.classList.contains('vbst-item')) {
-        return
+      const tgt = evt.relatedTarget;
+      if (tgt && tgt.classList.contains("vbst-item")) {
+        return;
       }
-      this.isFocused = false
-      this.$emit('blur')
+      this.isFocused = false;
+      this.$emit("blur");
     },
 
     handleInput(newValue) {
-      this.isFocused = true
-      this.inputValue = newValue
+      this.isFocused = true;
+      this.inputValue = newValue;
       // If v-model is being used, emit an input event
-      if (typeof this.value !== 'undefined') {
-        this.$emit('input', newValue)
+      if (typeof this.value !== "undefined") {
+        this.$emit("input", newValue);
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

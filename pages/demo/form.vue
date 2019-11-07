@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import DemoForm from '~/components/demo/form'
+import DemoForm from "~/components/demo/form";
 
 export default {
   components: { DemoForm },
   data() {
-    return {}
+    return {};
   }
-}
+};
 </script>

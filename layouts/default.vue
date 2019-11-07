@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Navbar from '~/components/common/navbar'
+import Navbar from "~/components/common/navbar";
 export default {
   components: { Navbar }
-}
+};
 </script>
